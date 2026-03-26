@@ -2717,6 +2717,9 @@ class Main(Gtk.ApplicationWindow):
         # Get the directory containing the executable
         game_directory = os.path.dirname(game.path)
 
+        # Get the exe name for StartupWMClass
+        exe_name = os.path.basename(game.path).lower()
+
         # Create a .desktop file
         if IS_FLATPAK:
             desktop_file_content = (
@@ -2726,6 +2729,7 @@ class Main(Gtk.ApplicationWindow):
                 f'Icon={new_icon_path}\n'
                 f'Type=Application\n'
                 f'Categories=Game;\n'
+                f'StartupWMClass={exe_name}\n'
                 f'Path={game_directory}\n'
             )
         else:
@@ -2736,6 +2740,7 @@ class Main(Gtk.ApplicationWindow):
                 f'Icon={new_icon_path}\n'
                 f'Type=Application\n'
                 f'Categories=Game;\n'
+                f'StartupWMClass={exe_name}\n'
                 f'Path={game_directory}\n'
             )
 
